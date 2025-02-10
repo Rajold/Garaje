@@ -4,7 +4,7 @@ class Conexion{
     protected $db;
     private $driver="mysql";
     private $host= "localhost";
-    private $bd= "mioPark";
+    private $bd= "garageDb";
     private $usuario= "root";
     private $contrasena= "";
 
