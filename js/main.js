@@ -10,11 +10,12 @@ formLogin.addEventListener('submit', (evento) => {
         })
         .then(resp => resp.json())
         .then(datos => {
-            if (datos.estado === 'success') {
-                window.location.href = 'loged.html';
-            } else {
-                alert('Login fallido');
+            if (datos.estado === 'success' && datos.perfil=== 'admin') {
+                window.location.href = 'admin.html';
+            } else if (datos.estado=== 'success' && datos.perfil=== 'operador'){
+                window.location.href= 'loged.html';
             }
+                alert('Login fallido');
         })
         .catch(error => {
             console.error('Error:', error);

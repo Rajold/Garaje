@@ -8,11 +8,15 @@ if ($_POST) {
     $Modelo = new Usuarios();
 
     if ($Modelo->login($Usuario, $Password)) {
-        echo json_encode(['estado' => 'success']);
+        $perfil= $Modelo->getPerfil();
+
+        if ($perfil== 'admin') {
+            echo json_encode(['estado' => 'success', 'perfil'=> 'admin']);
+        }else {
+            echo json_encode(['estado'=> 'success', 'perfil'=> 'operador']);
+        }
     } else {
         echo json_encode(['estado' => 'error']);
     }
-}else {
-    header('location: ../index.html');
 }
 ?>
