@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/syles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Garage</title>
 </head>
 <body>
-   <div class="contenedorPrincipal">
-    <div class="login">
-        <h2><strong>Iniciaste Admin</strong></h2>
-        
-    </div>
-   </div>
-
-   <script src="js/main.js" ></script>
+    <div class="contenedorPrincipal">
+        <div class="login">
+            <h2>Agregar Usuarios</h2>
+            <form id="formAddUser">
+                <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                <input type="text" name="usuario" id="usuario" placeholder="Usuario" required>
+                <input type="password" name="contrasena" id="contrasena" placeholder="Contrasena" required>
+                <input type="text" name="perfil" id="perfil" placeholder="Perfil" required>
+                <input type="text" name="estado" id="estado" placeholder="Estado" required>
+                <button id="registrar">REGISTRAR USUARIO</button>
+                
+    
+            </form>
+        </div>
+       </div>
+    
+       <script src="js/main.js" ></script>
 </body>
 </html>

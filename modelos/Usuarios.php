@@ -63,5 +63,34 @@ class Usuarios extends Conexion{
         session_destroy();
         header('location: ../../index.php');
     }
+
+    public function add(
+    $Nombre, 
+    $Usuario,
+    $Contrasena,
+    $Perfil,
+    $Estado){
+        $statement= $this-> db-> prepare("INSERT INTO usuarios (nombre, usuario, contrasena, perfil, estado) 
+        VALUES (:Nombre, :Usuario, :Contrasena, :Perfil, :Estado)");
+
+        $statement-> bindParam(":Nombre", $Nombre);
+        $statement-> bindParam(":Usuario", $Usuario);
+        $statement-> bindParam(":Contrasena", $Contrasena);
+        $statement-> bindParam(":Perfil", $Perfil);
+        $statement-> bindParam(":Estado", $Estado);
+        if ($statement-> execute()) {
+            $result= $statement-> fetch();
+            $_SESSION["NOMBRE"]= $result["nombre"];
+            $_SESSION["ID"]= $result["id_usuario"];
+            $_SESSION["PERFIL"]= $result["perfil"];
+            //echo "Datos de Usuario encontrados";
+            return true;
+        }else {
+            //echo "Datos de Usuarios no encontrados";
+            return false;
+        }
+    }
+
 }
+
 ?>
