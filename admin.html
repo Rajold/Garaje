@@ -14,8 +14,19 @@
                 <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
                 <input type="text" name="usuario" id="usuario" placeholder="Usuario" required>
                 <input type="password" name="contrasena" id="contrasena" placeholder="Contrasena" required>
-                <input type="text" name="perfil" id="perfil" placeholder="Perfil" required>
-                <input type="text" name="estado" id="estado" placeholder="Estado" required>
+                <h4>Perfil</h4>
+                <div class="sel">
+                    <select name="perfil" id="perfil">
+                        <option value=""disabled>Elija el un perfil para el Usuario</option>
+                        <option value="operador" selected>Operador</option>
+                        <option value="admin">Administrador</option>
+                    </select><h4>Estado</h4>
+                    <select name="estado" id="estado">
+                        <option value=""disabled>Elija el estado</option>
+                        <option value="activo" selected>Activo</option>
+                        <option value="inactivo">Inactivo</option>
+                    </select>
+                </div>
                 <button id="registrar">REGISTRAR USUARIO</button>
                 
     

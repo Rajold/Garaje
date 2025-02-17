@@ -33,14 +33,20 @@ formAddUser.addEventListener('submit', (evento) => {
     })
     .then(resp => resp.json())
     .then(datos => {
-      if (datos.estado === 'success') {
+      try{
+      const respuesta= JSON.parse(datos);
+      if (respuesta.estado === 'success') {
         alert('Usuario creado con éxito');
       } else {
         alert('Error al crear el usuario');
       }
-    })
+    }catch (error) {
+      console.error('Error parse', error);
+      alert('Ocurrió un error durante la creación del usuario. Por favor, inténtelo de nuevo.');
+    }})
     .catch(error => {
       console.error('Error:', error);
       alert('Ocurrió un error durante la creación del usuario. Por favor, inténtelo de nuevo.');
+
     });
 });

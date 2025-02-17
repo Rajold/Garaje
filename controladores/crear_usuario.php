@@ -9,12 +9,20 @@ if ($_POST) {
   $Estado = $_POST['estado'];
 
   $ModeloUsuarios = new Usuarios();
-  if ($ModeloUsuarios->add($Nombre, $Usuario, $Contrasena, $Perfil, $Estado)) {
-    echo json_encode(['estado' => 'success']);
-  } else {
-    echo json_encode(['estado' => 'error']);
+
+  $statement= $ModeloUsuarios-> db-> prepare("SELECT * FROM usuarios WHERE usuario= :Usuario");
+  $statement-> bindParam(":Usuario", $Usuario);
+  $statement-> execute();
+
+  if ($statement-> rowCount() > 0) {
+    echo json_encode(['estado'=> 'El usuarios ya existe']);
+  }else {    
+    if ($ModeloUsuarios->add($Nombre, $Usuario, $Contrasena, $Perfil, $Estado)) {
+      echo json_encode(['estado' => 'success', 'mensaje'=> 'Usuario agregado']);
+    } else {
+      echo json_encode(['estado' => 'error', 'mensaje'=> 'Error al agregar usuario']);
+      }
+      }
   }
-} else {
-  header('location:../../index.php');
-}
+  
 ?>
