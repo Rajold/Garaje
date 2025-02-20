@@ -8,8 +8,12 @@ document.getElementById("formAddUser").addEventListener("submit", async function
     const estado = document.getElementById("estado").value;
     const datos = { nombre, usuario, contrasena, perfil, estado };
     // alert (datos.perfil);
-
+3
     try {
+    const datos= {
+        nombre, usuario, contrasena, perfil, estado};
+        console.log(JSON.stringify(datos));
+    
         const response = await fetch("controladores/registrar_usuario.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
