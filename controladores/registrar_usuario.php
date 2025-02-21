@@ -2,9 +2,16 @@
 header("Content-Type: application/json");
 require '../app/conexion.php';
 
+$conexion= new Conexion();
+$pdo= $conexion-> __construct();
+
 $data = json_decode(file_get_contents("php://input"), true);
 
-if (!isset($data['nombre']) || !isset($data['usuario']) || !isset($data['contrasena']) || !isset($data['perfil']) || !isset($data['estado'])) {
+if (!isset($data['nombre']) || 
+    !isset($data['usuario']) || 
+    !isset($data['contrasena']) || 
+    !isset($data['perfil']) || 
+    !isset($data['estado'])) {
     echo json_encode(["status" => "error", "message" => "Faltan datos"]);
     exit;
 }
@@ -14,7 +21,6 @@ $usuario = trim($data['usuario']);
 $contrasena = password_hash($data['contrasena'], PASSWORD_BCRYPT); // Encriptar contraseña
 $perfil = trim($data['perfil']);
 $estado = trim($data['estado']);
-
 
 try {
     $stmt = $pdo->prepare("INSERT INTO usuarios (nombre, usuario, contrasena, perfil, estado) VALUES (?, ?, ?, ?, ?)");
