@@ -1,5 +1,4 @@
 const formLogin = document.querySelector('#formLogin');
-const formAddUser = document.querySelector('#formAddUser');
 
 formLogin.addEventListener('submit', (evento) => {
     evento.preventDefault();
