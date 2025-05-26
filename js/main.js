@@ -14,8 +14,9 @@ formLogin.addEventListener('submit', (evento) => {
                 window.location.href = 'admin.html';
             } else if (datos.estado=== 'success' && datos.perfil=== 'operador'){
                 window.location.href= 'loged.html';
+            } else{
+                alert('Acceso Denegado');
             }
-                alert('Login fallido');
         })
         .catch(error => {
             console.error('Error:', error);
