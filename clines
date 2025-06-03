@@ -1,0 +1,258 @@
+conexiòn a internet wifi para instalar arch---
+iwctl
+device list
+device wlan0 set-property Powered on
+adapter phy0 set-property Powered on
+station wlan0 scan
+station wlan0 get-networks
+station wlan0 connect wirelessLanName
+wirelessLanPassword
+
+
+
+
+
+
+instalar neofetch---
+sudo pacman -S neofetch
+
+configurar  pacman---
+sudo nano /etc/pacman.conf
+Misc options---
+descomentar: color y ParallelDownloads = 5
+agregar ILoveCandy (animación pacman)
+
+instalar fastfetch---
+sudo pacman -S fastfetch
+
+instalar aur---
+sudo pacman -S --needed base-devel git
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+comprobar: yay --version
+
+instalar unrar---
+sudo pacman unrar
+descomprimir un archivo:
+unrar x fileNamen
+
+instalar discover---
+sudo pacman -S discover
+quitar error al abrir discover:
+ sudo pacman -S packagekit-qt6
+
+instalar pamac---
+yay -S pamac-aur
+
+instalar soporte bluetooth---
+sudo pacman -S bluez bluez-utils 
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+sudo systemctl status bluetooth.service
+reboot
+yay bluetooth
+6, 9, 1 (1->blueberry, 6->bluez-libs, 9->bluez-tools)
+
+instalar vscode---
+git clone https://aur.archlinux.org/visual-studio-code-bin.git
+cd visual-studio-code-bin/
+makepkg -si
+
+instalar xampp---
+
+yay -S xampp
+
+para abrir xampp:
+sudo /opt/lampp/manager-linux-x64.run
+
+instalar koodo reader---
+install git and yay 
+
+
+instalar chrome---
+sudo pacman -S git
+sudo git clone https://aur.archlinux.org/google-chrome.git
+
+sudo chmod 777 google-chrome
+cd google-chrome
+makepkg -s
+rename .deb and .zst files to chrome
+sudo pacman -U chrome.zst
+
+yay -Ss google chrome
+yay -S google-chrome
+
+montar teléfono android---
+sudo pacman -S mtpfs
+sudo pacman -S gvfs-mtp
+sudo pacman -Sy gvfs-gphoto2
+
+instalar android studio---
+git clone https://aur.archlinux.org/android-studio.git
+cd android-studio/
+makepkg -si
+sudo pacman -U android-studio-2024.1.1.11-1-x86_64.pkg.tar.zst
+
+instalar zip---
+sudo pacman -S zip unzip
+
+instalar libreOffice---
+pacman -S libreoffice-fresh
+pacman -S libreoffice-fresh-es
+pacman -S ttf-caladea ttf-carlito ttf-dejavu ttf-liberation ttf-linux-libertine-g noto-fonts adobe-source-code-pro-fonts adobe-source-sans-fonts adobe-source-serif-fonts
+
+extraer archivo tgz---
+tar zxvf pseint-l64-20250314.tgz
+ir a la ruta y teclear:
+./pseint(en este caso)
+
+
+instalar fontforge---
+git clone https://aur.archlinux.org/fontforge-git.git
+cd fontforge
+makepkg -si
+
+desinstalar aplicaciones android---
+adb devices
+adb shell screencap -p /sdcard/captura.png
+adb shell
+
+
+lxqt-config
+
+instalar sublimeText
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg && sudo pacman-key --add sublimehq-pub.gpg && sudo pacman-key --lsign-key 8A8F901A && rm sublimehq-pub
+echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu sublime-text
+iniciar...
+subl test.py
+
+sin interfaz gráfica-----------------------------------------------------------------------------
+
+conectar wiFi 
+nmcli r wifi on 
+nmcli d wifi list
+nmcli d wifi connect nombreRedWifi password passworRedWifi
+
+borrar red wifi---
+nmcli c delete id wifiName
+conectar especificando adaptador wifi---
+nmcli device wifi connect wifiName ifname wifiAdapter password wifiPassword
+
+conexxiòn especificando wlan1---
+nmcli device wifi connect wifiName ifname wlan1 password wifiPassword
+
+instalar gestor de inicio de sesión---
+sudo pacman -S lightdm lightdm-gtk-greeter
+
+instalar editor nano---
+sudo pacman -S nano
+
+configurar greeter---
+sudo nano /etc/lightdm/lightdm.conf 
+
+descomentar y editar la linea: #greeter-session=example-gtk-gnome
+linea editada: greeter-session=lightdm-gtk-greeter
+guardar y cerrar editor    
+
+sudo systemctl enable lightdm.service
+
+instalar qtile---
+sudo pacman -S qtile xterm alacritty rofi which nitrogen pavucontrol pamixer 
+arandr udiskie ntfs-3g network-manager-applet volumeicon cbatticon xorg-xinit git thunar 
+ranger gvfs lxappearance picom 
+
+
+reboot
+
+cambiar terminal---
+sudo nano .config/qtile/config.py
+modificar línea:
+Key([mod], "Return", lazy.sapwn(terminal), desc=Launch terminal"),
+Key([mod], "Return", lazy.sapwn("alacritty"), desc=Launch terminal"),
+
+agregar atajos---
+Key([mod], "m", lazy.sapwn("rofi -show drum), desc=abre el menú rofi"),
+
+
+archivos de configuraciòn---
+qtile---
+code .config/qtile/config.py
+code .local/share/qtile/qtile.log
+lightdm---
+sudo nano /etc/lightdm/lightdm.conf 
+
+configuraciones de teclado---
+setxkbmap -layout latam,es para dell inspiron N4110
+setxkbmap -layout latam,es" >> $HOME/.profile
+localectl set-keymap en
+es
+es-cp850
+es-olpc
+localectl list-keymaps
+localectl status
+
+tar zxvf pseint-l64-20250314.tgz
+cd pseint
+
+instalar Android Debug Bridge---
+sudo pacman -S android-tools
+adb devices
+echo $PATH
+adb version
+/usr/bin/adb 
+pm list packages
+
+package:com.android.internal.display.cutout.emulation.noCutout
+package:cz.hipercalc
+package:com.android.cts.priv.ctsshim
+package:com.android.internal.display.cutout.emulation.corner
+package:com.google.android.ext.services
+package:com.oasi...
+
+...cPayment
+package:android.auto_generated_rro_vendor__
+package:com.android.theme.icon_pack.circular.android
+package:com.google.android.apps.restore
+
+pm list packages | grep gsimbase(example)
+pm uninstall -k --user 0 com.google.android.apps.wellbeing(example)
+
+
+Instalar pandas para python---
+sudo pacman -Syuu (Si no instala python-pip)
+sudo pacman -S python-pip
+pip --version
+pip install pandas(en este paso le tira una advertencia, posibles conflictos desea crear un entorno virtual le dice que si, elije la versión python que el le marca y listo)
+
+instalar flask---
+sudo pacman -S python-pip
+pip install flask
+pip list
+python -m pip install flask
+sudo pacman -S python-flask
+
+{}Diccionario
+[]Lista
+()Tupla
+
+formatear usb---
+lsblk
+sudo umount /dev/sdb2
+password
+sudo mkfs.vfat -F 32 -n label /dev/sdb2
+
+sudo fdisk -l
+sudo pacman -S wimlib
+yay -S woeusb
+
+
+tty-clock -scx -C 4
+
+instalar cava vumeter
+sudo pacman -S cava
+
+
+
+
